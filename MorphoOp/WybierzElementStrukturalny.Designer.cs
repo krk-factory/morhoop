@@ -32,8 +32,8 @@
             this.typElementuLabel = new System.Windows.Forms.Label();
             this.promienLubBokLabel = new System.Windows.Forms.Label();
             this.nachylenieLabel = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.promienLubBokTextBox = new System.Windows.Forms.TextBox();
+            this.nachylenieTextBox = new System.Windows.Forms.TextBox();
             this.potwierdzButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -44,6 +44,7 @@
             this.wyborElementuComboBox.Name = "wyborElementuComboBox";
             this.wyborElementuComboBox.Size = new System.Drawing.Size(121, 21);
             this.wyborElementuComboBox.TabIndex = 0;
+            this.wyborElementuComboBox.SelectedIndexChanged += new System.EventHandler(this.wyborElementuComboBox_SelectedIndexChanged);
             // 
             // typElementuLabel
             // 
@@ -72,19 +73,19 @@
             this.nachylenieLabel.TabIndex = 3;
             this.nachylenieLabel.Text = "Wielkość";
             // 
-            // textBox1
+            // promienLubBokTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(123, 49);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(121, 20);
-            this.textBox1.TabIndex = 4;
+            this.promienLubBokTextBox.Location = new System.Drawing.Point(123, 49);
+            this.promienLubBokTextBox.Name = "promienLubBokTextBox";
+            this.promienLubBokTextBox.Size = new System.Drawing.Size(121, 20);
+            this.promienLubBokTextBox.TabIndex = 4;
             // 
-            // textBox2
+            // nachylenieTextBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(123, 86);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(121, 20);
-            this.textBox2.TabIndex = 5;
+            this.nachylenieTextBox.Location = new System.Drawing.Point(123, 86);
+            this.nachylenieTextBox.Name = "nachylenieTextBox";
+            this.nachylenieTextBox.Size = new System.Drawing.Size(121, 20);
+            this.nachylenieTextBox.TabIndex = 5;
             // 
             // potwierdzButton
             // 
@@ -103,8 +104,8 @@
             this.ClientSize = new System.Drawing.Size(268, 162);
             this.ControlBox = false;
             this.Controls.Add(this.potwierdzButton);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.nachylenieTextBox);
+            this.Controls.Add(this.promienLubBokTextBox);
             this.Controls.Add(this.nachylenieLabel);
             this.Controls.Add(this.promienLubBokLabel);
             this.Controls.Add(this.typElementuLabel);
@@ -112,7 +113,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "WybierzElementStrukturalny";
-            this.Text = "Wybierz element strukturalny";
+            this.Text = "Stwórz element strukturalny";
             this.Load += new System.EventHandler(this.WybierzElementStrukturalny_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -125,8 +126,8 @@
         private System.Windows.Forms.Label typElementuLabel;
         private System.Windows.Forms.Label promienLubBokLabel;
         private System.Windows.Forms.Label nachylenieLabel;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox promienLubBokTextBox;
+        private System.Windows.Forms.TextBox nachylenieTextBox;
         private System.Windows.Forms.Button potwierdzButton;
     }
 }

@@ -22,9 +22,9 @@ namespace MorphoOp
 
         public ElementStrukt(string typEl, params int[] wielkosc)
         {
-            if (typEl == "kwadrat")     // Jeden element w 'wielkosc', bo mamy tylko bok kwadratu
+            if (typEl == "Kwadrat")     // Jeden element w 'wielkosc', bo mamy tylko bok kwadratu
             {
-                nazwaElementu = "Kwadrat";
+                nazwaElementu = typEl;
                 wielkoscElementu1 = wielkosc[0];
                 
                 strukturaElementu = new int[wielkosc[0], wielkosc[0]];
@@ -37,10 +37,10 @@ namespace MorphoOp
                     }
                 }
             }
-            else if (typEl == "kolo")      // Jeden element w 'wielkosc', bo mamy tylko promień koła 
+            else if (typEl == "Kolo")      // Jeden element w 'wielkosc', bo mamy tylko promień koła 
                                            // w tym przypadku 'wielkosc[0]' to promien
             {
-                nazwaElementu = "Kolo";
+                nazwaElementu = typEl;
                 wielkoscElementu1 = wielkosc[0];
                 
                 int srednica = 2 * wielkosc[0] + 1;
@@ -63,9 +63,9 @@ namespace MorphoOp
                     }
                 }
             }
-            else if (typEl == "odcinek")    // Dwa elementy w 'wielkosci' -> [0] - długość, [1] - nachylenie
+            else if (typEl == "Odcinek")    // Dwa elementy w 'wielkosci' -> [0] - długość, [1] - nachylenie
             {
-                nazwaElementu = "Odicnek";
+                nazwaElementu = typEl;
                 wielkoscElementu1 = wielkosc[0];    // Długość
                 wielkoscElementu2 = wielkosc[1];    // Nachylenie
                 
