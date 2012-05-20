@@ -88,6 +88,8 @@ namespace MorphoOp
             {
                 //udostepnianieOperacji(false);
             }
+
+            obrazWyjsciowyPictureBox.Image = null;
         }
 
         private void zapiszObrazWyjsciowyToolStripMenuItem_Click(object sender, EventArgs e)
@@ -166,6 +168,7 @@ namespace MorphoOp
                 daneElementuLabel.Text = "BRAK";
             }
 
+            obrazWyjsciowyPictureBox.Image = null;
             udostepnianieOperacji(wes.PoprawnoscDanych);
 
             //MessageBox.Show("1: " + elStr.NazwaElementu + ", 2: " + elStr.PromienLubBok);   // DEBUG
