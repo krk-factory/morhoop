@@ -35,6 +35,7 @@
             this.promienLubBokTextBox = new System.Windows.Forms.TextBox();
             this.nachylenieTextBox = new System.Windows.Forms.TextBox();
             this.potwierdzButton = new System.Windows.Forms.Button();
+            this.kwadratInfoLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // wyborElementuComboBox
@@ -97,12 +98,22 @@
             this.potwierdzButton.UseVisualStyleBackColor = true;
             this.potwierdzButton.Click += new System.EventHandler(this.potwierdzButton_Click);
             // 
+            // kwadratInfoLabel
+            // 
+            this.kwadratInfoLabel.AutoSize = true;
+            this.kwadratInfoLabel.Location = new System.Drawing.Point(15, 86);
+            this.kwadratInfoLabel.Name = "kwadratInfoLabel";
+            this.kwadratInfoLabel.Size = new System.Drawing.Size(35, 13);
+            this.kwadratInfoLabel.TabIndex = 7;
+            this.kwadratInfoLabel.Text = "label1";
+            // 
             // WybierzElementStrukturalny
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(268, 162);
             this.ControlBox = false;
+            this.Controls.Add(this.kwadratInfoLabel);
             this.Controls.Add(this.potwierdzButton);
             this.Controls.Add(this.nachylenieTextBox);
             this.Controls.Add(this.promienLubBokTextBox);
@@ -129,5 +140,6 @@
         private System.Windows.Forms.TextBox promienLubBokTextBox;
         private System.Windows.Forms.TextBox nachylenieTextBox;
         private System.Windows.Forms.Button potwierdzButton;
+        private System.Windows.Forms.Label kwadratInfoLabel;
     }
 }

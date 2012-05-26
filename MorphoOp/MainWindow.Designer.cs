@@ -160,6 +160,7 @@
             this.erozjaToolStripMenuItem.Name = "erozjaToolStripMenuItem";
             this.erozjaToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
             this.erozjaToolStripMenuItem.Text = "Erozja";
+            this.erozjaToolStripMenuItem.Click += new System.EventHandler(this.erozjaToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 

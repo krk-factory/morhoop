@@ -38,6 +38,8 @@ namespace MorphoOp
 
             promienLubBokLabel.Text = "Nieaktywne";
             nachylenieLabel.Text = "Nieaktywne";
+
+            kwadratInfoLabel.Visible = false;
         }
 
 
@@ -48,8 +50,12 @@ namespace MorphoOp
             if (wyborElementuComboBox.SelectedIndex == 0)
             {
                 promienLubBokLabel.Enabled = true;
+                nachylenieLabel.Visible = true;
                 nachylenieLabel.Enabled = false;
+                nachylenieTextBox.Visible = true;
                 nachylenieTextBox.Enabled = false;
+                
+                kwadratInfoLabel.Visible = false;
 
                 promienLubBokLabel.Text = "Długość promienia";
                 nachylenieLabel.Text = "Nieaktywne";
@@ -57,17 +63,24 @@ namespace MorphoOp
             else if (wyborElementuComboBox.SelectedIndex == 1)
             {
                 promienLubBokLabel.Enabled = true;
-                nachylenieLabel.Enabled = false;
-                nachylenieTextBox.Enabled = false;
+
+                nachylenieTextBox.Visible = false;
+                nachylenieLabel.Visible = false;
+
+                kwadratInfoLabel.Visible = true;
+                kwadratInfoLabel.Text = "Bok kwadratu liczony jest wg wzoru: 2 * n + 1";
 
                 promienLubBokLabel.Text = "Długość boku";
-                nachylenieLabel.Text = "Nieaktywne";
             }
             else if (wyborElementuComboBox.SelectedIndex == 2)
             {
                 promienLubBokLabel.Enabled = true;
+                nachylenieLabel.Visible = true;
                 nachylenieLabel.Enabled = true;
+                nachylenieTextBox.Visible = true;
                 nachylenieTextBox.Enabled = true;
+
+                kwadratInfoLabel.Visible = false;
 
                 promienLubBokLabel.Text = "Długość odcinka";
                 nachylenieLabel.Text = "Nachylenie odcinka";
@@ -89,7 +102,7 @@ namespace MorphoOp
                 else if (wyborElementuComboBox.SelectedIndex == 1)
                 {
                     nazwaElementu = (string)wyborElementuComboBox.SelectedItem;
-                    wielkoscElementu1 = Convert.ToInt32(promienLubBokTextBox.Text);
+                    wielkoscElementu1 = 2 * Convert.ToInt32(promienLubBokTextBox.Text) + 1;
                 }
                 else if (wyborElementuComboBox.SelectedIndex == 2)
                 {
