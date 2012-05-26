@@ -14,9 +14,9 @@ namespace MorphoOp
     {
         /* --- Pola klasy --- */
         
-        protected Bitmap obrazWejsciowy;    // ew. zrobić public, aby korzystać z niego wszędzie
-        protected int wysokoscObrazka;
-        protected int szerokoscObrazka;
+        private Bitmap obrazWejsciowy;    // ew. zrobić public, aby korzystać z niego wszędzie
+        private int wysokoscObrazka;
+        private int szerokoscObrazka;
 
         private ElementStrukt elStr;
 
