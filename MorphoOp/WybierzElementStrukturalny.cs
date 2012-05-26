@@ -123,7 +123,7 @@ namespace MorphoOp
             get { return nazwaElementu; }
         }
 
-        public int PromienLubBok
+        public int WielkoscElementu
         {
             get { return wielkoscElementu1; }
         }
