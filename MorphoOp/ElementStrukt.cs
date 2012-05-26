@@ -5,74 +5,22 @@ using System.Text;
 
 namespace MorphoOp
 {
-    class ElementStrukt
+    abstract class ElementStrukt
     {
         /* --- Pola klasy --- */
         
-        private int[,] strukturaElementu;
-        
-        private string nazwaElementu;
-        private int wielkoscElementu1;  // Długość boku lub promienia
-        private int wielkoscElementu2;  // Nachylenie - tylko dla _odcinka_
+        protected int[,] strukturaElementu;
+
+        protected string nazwaElementu;
+        protected int wielkoscElementu;  // Długość boku lub promienia
+        protected int nachylenieOdcinka; // Tylko dla odcinka! (ew. poprawić)
 
 
-        /* --- Konstruktory --- */
+        /* --- Konstruktor --- */
         
         public ElementStrukt() {}
 
-        public ElementStrukt(string typEl, params int[] wielkosc)
-        {
-            if (typEl == "Kwadrat")     // Jeden element w 'wielkosc', bo mamy tylko bok kwadratu
-            {
-                nazwaElementu = typEl;
-                wielkoscElementu1 = wielkosc[0];
-                
-                strukturaElementu = new int[wielkosc[0], wielkosc[0]];
-
-                for (int k1 = 0; k1 < wielkosc[0]; k1++)
-                {
-                    for (int k2 = 0; k2 < wielkosc[0]; k2++)
-                    {
-                        strukturaElementu[k1, k2] = 1;
-                    }
-                }
-            }
-            else if (typEl == "Kolo")      // Jeden element w 'wielkosc', bo mamy tylko promień koła 
-                                           // w tym przypadku 'wielkosc[0]' to promien
-            {
-                nazwaElementu = typEl;
-                wielkoscElementu1 = wielkosc[0];
-                
-                int srednica = 2 * wielkosc[0] + 1;
-                int srodek = (srednica + 1) / 2;
-
-                strukturaElementu = new int[srednica, srednica];
-
-                for (int k1 = 0; k1 < srednica; k1++)
-                {
-                    for (int k2 = 0; k2 < srednica; k2++)
-                    {
-                        if (Math.Pow((k1 - srodek), 2) + Math.Pow((k2 - srodek), 2) <= Math.Pow(wielkosc[0], 2))
-                        {
-                            strukturaElementu[k1, k2] = 1;
-                        }
-                        else
-                        {
-                            strukturaElementu[k1, k2] = 9;     // 9 - dowolony element
-                        }
-                    }
-                }
-            }
-            else if (typEl == "Odcinek")    // Dwa elementy w 'wielkosci' -> [0] - długość, [1] - nachylenie
-            {
-                nazwaElementu = typEl;
-                wielkoscElementu1 = wielkosc[0];    // Długość
-                wielkoscElementu2 = wielkosc[1];    // Nachylenie
-                
-            }
-        }
-
-
+       
         /* --- Właściwości --- */
 
         public string NazwaElementu
@@ -80,14 +28,14 @@ namespace MorphoOp
             get { return nazwaElementu; }
         }
 
-        public int PromienLubBok
+        public int WielkoscElementu
         {
-            get { return wielkoscElementu1; }
+            get { return wielkoscElementu; }
         }
 
-        public int Nachylenie
+        public int Nachylenie       // Tylko dla odcinka!
         {
-            get { return wielkoscElementu2; }
+            get { return nachylenieOdcinka; }
         }
     }
 }

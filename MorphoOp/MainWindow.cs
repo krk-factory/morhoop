@@ -150,16 +150,16 @@ namespace MorphoOp
                 switch (wes.NazwaElementu)
                 {
                     case "Kwadrat":
-                        elStr = new ElementStrukt(wes.NazwaElementu, wes.PromienLubBok);
-                        daneElementuLabel.Text = "" + elStr.NazwaElementu + " o boku " + elStr.PromienLubBok;
+                        elStr = new Kwadrat(wes.PromienLubBok);
+                        daneElementuLabel.Text = "" + elStr.NazwaElementu + " o boku " + elStr.WielkoscElementu;
                         break;
                     case "Kolo":
-                        elStr = new ElementStrukt(wes.NazwaElementu, wes.PromienLubBok);
-                        daneElementuLabel.Text = "" + elStr.NazwaElementu + " o promieniu " + elStr.PromienLubBok;
+                        elStr = new Kolo(wes.PromienLubBok);
+                        daneElementuLabel.Text = "" + elStr.NazwaElementu + " o promieniu " + elStr.WielkoscElementu;
                         break;
                     case "Odcinek":
-                        elStr = new ElementStrukt(wes.NazwaElementu, wes.PromienLubBok, wes.Nachylenie);
-                        daneElementuLabel.Text = "" + elStr.NazwaElementu + " o długości " + elStr.PromienLubBok + " i nachyleniu " + elStr.Nachylenie + " stopni";
+                        elStr = new Odcinek(wes.PromienLubBok, wes.Nachylenie);
+                        daneElementuLabel.Text = "" + elStr.NazwaElementu + " o długości " + elStr.WielkoscElementu + " i nachyleniu " + elStr.Nachylenie + " stopni";
                         break;
                 }
             }

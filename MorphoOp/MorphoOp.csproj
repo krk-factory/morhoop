@@ -52,6 +52,8 @@
     <Compile Include="FiltracjaPrewitt.cs" />
     <Compile Include="FiltracjaSobel.cs" />
     <Compile Include="GradientMorfoErozja.cs" />
+    <Compile Include="Kolo.cs" />
+    <Compile Include="Kwadrat.cs" />
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -59,6 +61,7 @@
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="GradientMorfoDylatacja.cs" />
+    <Compile Include="Odcinek.cs" />
     <Compile Include="Otwarcie.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
