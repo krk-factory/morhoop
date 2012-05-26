@@ -152,7 +152,7 @@ namespace MorphoOp
                 {
                     case "Kwadrat":
                         elStr = new Kwadrat(wes.WielkoscElementu);
-                        daneElementuLabel.Text = "" + elStr.NazwaElementu + " o boku " + elStr.WielkoscElementu;
+                        daneElementuLabel.Text = "" + elStr.NazwaElementu + " o boku o n = " + elStr.WielkoscElementu;
                         break;
                     case "Kolo":
                         elStr = new Kolo(wes.WielkoscElementu);

@@ -70,7 +70,7 @@ namespace MorphoOp
                 kwadratInfoLabel.Visible = true;
                 kwadratInfoLabel.Text = "Bok kwadratu liczony jest wg wzoru: 2 * n + 1";
 
-                promienLubBokLabel.Text = "Długość boku";
+                promienLubBokLabel.Text = "n boku";
             }
             else if (wyborElementuComboBox.SelectedIndex == 2)
             {
@@ -102,7 +102,7 @@ namespace MorphoOp
                 else if (wyborElementuComboBox.SelectedIndex == 1)
                 {
                     nazwaElementu = (string)wyborElementuComboBox.SelectedItem;
-                    wielkoscElementu1 = 2 * Convert.ToInt32(promienLubBokTextBox.Text) + 1;
+                    wielkoscElementu1 = Convert.ToInt32(promienLubBokTextBox.Text);
                 }
                 else if (wyborElementuComboBox.SelectedIndex == 2)
                 {
