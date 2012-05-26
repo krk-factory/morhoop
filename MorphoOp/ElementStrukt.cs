@@ -37,5 +37,10 @@ namespace MorphoOp
         {
             get { return nachylenieOdcinka; }
         }
+
+        public int[,] StrukturaElementu
+        {
+            get { return strukturaElementu; }
+        }
     }
 }
