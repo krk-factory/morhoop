@@ -128,6 +128,11 @@ namespace MorphoOp
             this.Close();
         }
 
+        private void anulujButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
 
         /* --- Właściwości --- */
 

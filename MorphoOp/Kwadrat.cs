@@ -20,7 +20,7 @@ namespace MorphoOp
             {
                 for (int k2 = 0; k2 < 2 * wielkoscElementu + 1; k2++)
                 {
-                    strukturaElementu[k1, k2] = 1;
+                    strukturaElementu[k1, k2] = 255;
                 }
             }
         }

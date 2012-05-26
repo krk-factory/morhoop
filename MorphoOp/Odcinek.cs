@@ -16,6 +16,7 @@ namespace MorphoOp
             nachylenieOdcinka = nachylenie;    // Nachylenie
 
             // TO DO !!!
+            // Aby zachować integralność z pozostałymi elementami, odcinek musi mieć długość 2 * n + 1
         }
     }
 }

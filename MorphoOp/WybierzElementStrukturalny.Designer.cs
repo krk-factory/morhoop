@@ -36,6 +36,7 @@
             this.nachylenieTextBox = new System.Windows.Forms.TextBox();
             this.potwierdzButton = new System.Windows.Forms.Button();
             this.kwadratInfoLabel = new System.Windows.Forms.Label();
+            this.anulujButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // wyborElementuComboBox
@@ -90,7 +91,7 @@
             // 
             // potwierdzButton
             // 
-            this.potwierdzButton.Location = new System.Drawing.Point(169, 127);
+            this.potwierdzButton.Location = new System.Drawing.Point(18, 127);
             this.potwierdzButton.Name = "potwierdzButton";
             this.potwierdzButton.Size = new System.Drawing.Size(75, 23);
             this.potwierdzButton.TabIndex = 6;
@@ -107,12 +108,23 @@
             this.kwadratInfoLabel.TabIndex = 7;
             this.kwadratInfoLabel.Text = "label1";
             // 
+            // anulujButton
+            // 
+            this.anulujButton.Location = new System.Drawing.Point(170, 127);
+            this.anulujButton.Name = "anulujButton";
+            this.anulujButton.Size = new System.Drawing.Size(75, 23);
+            this.anulujButton.TabIndex = 8;
+            this.anulujButton.Text = "Anuluj";
+            this.anulujButton.UseVisualStyleBackColor = true;
+            this.anulujButton.Click += new System.EventHandler(this.anulujButton_Click);
+            // 
             // WybierzElementStrukturalny
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(268, 162);
             this.ControlBox = false;
+            this.Controls.Add(this.anulujButton);
             this.Controls.Add(this.kwadratInfoLabel);
             this.Controls.Add(this.potwierdzButton);
             this.Controls.Add(this.nachylenieTextBox);
@@ -141,5 +153,6 @@
         private System.Windows.Forms.TextBox nachylenieTextBox;
         private System.Windows.Forms.Button potwierdzButton;
         private System.Windows.Forms.Label kwadratInfoLabel;
+        private System.Windows.Forms.Button anulujButton;
     }
 }
