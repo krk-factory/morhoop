@@ -25,11 +25,11 @@ namespace MorphoOp
                 {
                     if (Math.Pow((k1 - srodek), 2) + Math.Pow((k2 - srodek), 2) <= Math.Pow(wielkoscElementu, 2))
                     {
-                        strukturaElementu[k1, k2] = 1;
+                        strukturaElementu[k1, k2] = 255;
                     }
                     else
                     {
-                        strukturaElementu[k1, k2] = 9;     // 9 - dowolony element
+                        strukturaElementu[k1, k2] = 999;     // 999 - dowolony element
                     }
                 }
             }

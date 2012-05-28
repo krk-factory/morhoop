@@ -9,6 +9,7 @@ namespace MorphoOp
     class Erozja
     {
         private Bitmap obrazWe;
+        private Bitmap obrazZr;
         private Bitmap obrazWy;
 
         private ElementStrukt elS;
@@ -20,9 +21,10 @@ namespace MorphoOp
         int wysokoscObrazkaPierwotnego;
         int szerokoscObrazkaPierwotnego;
         
-        public Erozja(Bitmap obraz, ElementStrukt elS)
+        public Erozja(Bitmap obrazZr, Bitmap obrazWe, ElementStrukt elS)
         {
-            this.obrazWe = obraz;
+            this.obrazWe = obrazWe;
+            this.obrazZr = obrazZr;
             this.elS = elS;
             this.strukturaElementu = elS.StrukturaElementu;
 
@@ -33,7 +35,7 @@ namespace MorphoOp
 
             this.obrazWy = new Bitmap(szerokoscObrazkaPierwotnego, wysokoscObrazkaPierwotnego);
 
-            inicjalizacjaTablicy(elS.WielkoscElementu, obrazWe.Width, obrazWe.Height);
+            inicjalizacjaTablicy(elS.WielkoscElementu, szerokoscObrazkaPierwotnego, wysokoscObrazkaPierwotnego);
         }
 
         public Bitmap wykonajOperacje()
@@ -74,34 +76,40 @@ namespace MorphoOp
         {
             int[,] strukturaElementu = elS.StrukturaElementu;
 
-            bool czyIstniejePunkt = false;
+            bool czyIstniejePunkt = true;
             int t;
 
             
-            for (int k1 = 0; k1 < szerokoscObrazkaPierwotnego - 1; k1++)
+            for (int k1 = 0; k1 < szerokoscObrazkaPierwotnego; k1++)
             {
-                for (int k2 = 0; k2 < wysokoscObrazkaPierwotnego - 1; k2++)
+                for (int k2 = 0; k2 < wysokoscObrazkaPierwotnego; k2++)
                 {
                     for (int k3 = 0; k3 < wielkoscElementuCalkowita; k3++)
                     {
                         for (int k4 = 0; k4 < wielkoscElementuCalkowita; k4++)
                         {
-                            if (strukturaElementu[k3, k4] == tablicaErozyjna[k1, k2][k3, k4])
+                            if (k3 != (wielkoscElementuCalkowita - 1) / 2 && k4 != (wielkoscElementuCalkowita - 1) / 2)
                             {
-                                czyIstniejePunkt = true;
-                                //break;
+                                if (strukturaElementu[k3, k4] != 999)
+                                {
+                                    if (tablicaErozyjna[k1, k2][k3, k4] == 255)
+                                    {
+                                        czyIstniejePunkt = true;
+                                        //break;
+                                    }
+                                }
                             }
                         }
                     }
 
-                    if (czyIstniejePunkt)
+                    if (!czyIstniejePunkt)
                     {
-                        t = tablicaErozyjna[k1, k2][(wielkoscElementuCalkowita - 1) / 2, (wielkoscElementuCalkowita - 1) / 2];
+                        t = obrazZr.GetPixel(k1, k2).R;
                         obrazWy.SetPixel(k1, k2, Color.FromArgb(t, t, t));
                     }
                     else
                     {
-                        t = 0;
+                        t = 255;
                         obrazWy.SetPixel(k1, k2, Color.FromArgb(t, t, t));
                     }
                 }
@@ -111,11 +119,11 @@ namespace MorphoOp
         
         private void inicjalizacjaTablicy(int wielkoscElementu, int szerokoscObrazka, int wysokoscObrazka)
         {
-            tablicaErozyjna = new int[szerokoscObrazka, wysokoscObrazka][,];
+            tablicaErozyjna = new int[szerokoscObrazkaPierwotnego, wysokoscObrazkaPierwotnego][,];
 
-            for (int k1 = 0; k1 < szerokoscObrazka; k1++)
+            for (int k1 = 0; k1 < szerokoscObrazkaPierwotnego; k1++)
             {
-                for (int k2 = 0; k2 < wysokoscObrazka; k2++)
+                for (int k2 = 0; k2 < wysokoscObrazkaPierwotnego; k2++)
                 {
                     tablicaErozyjna[k1, k2] = new int[2 * wielkoscElementu + 1, 2 * wielkoscElementu + 1];
                 }

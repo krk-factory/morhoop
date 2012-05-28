@@ -179,17 +179,18 @@ namespace MorphoOp
         {
             rozszerzObraz(elStr.WielkoscElementu);
 
-            Erozja er = new Erozja(obrazTmp, elStr);
+            Erozja er = new Erozja(obrazWejsciowy, obrazTmp, elStr);
 
 
             obrazWyjsciowyPictureBox.Image = er.wykonajOperacje();
+            //obrazWyjsciowyPictureBox.Image = obrazTmp;
         }
 
 
         /* --- Rozszerzanie obrazka - ew. wyodrębnić jako kolejną klasę --- */
 
         private void rozszerzObraz(int wielkoscElementu)        // Potrzebne, aby wykonać poszczególne operacje na krawędziach obrazka
-        {
+        {                                                       // Trochę pochrzanione z indeksami, ale działa ;-)
             int szerokoscBazowa = obrazWejsciowy.Width;
             int wysokoscBazowa  = obrazWejsciowy.Height;
 
@@ -197,65 +198,66 @@ namespace MorphoOp
 
             int t;
 
-            for (int k1 = 0; k1 < obrazTmp.Width; k1++)
+
+            for (int k1 = 0; k1 < obrazTmp.Height; k1++)
             {
-                for (int k2 = 0; k2 < obrazTmp.Height; k2++)
+                for (int k2 = 0; k2 < obrazTmp.Width; k2++)
                 {
                     // PASKI
                     if (k2 >= wielkoscElementu && k2 <= (wielkoscElementu + (szerokoscBazowa-1)) && k1 < wielkoscElementu)
                     {
-                        t = obrazWejsciowy.GetPixel(0, k2 - wielkoscElementu).R;
+                        t = obrazWejsciowy.GetPixel(k2 - wielkoscElementu, 0).R;
 
-                        obrazTmp.SetPixel(k1, k2, Color.FromArgb(t, t, t));
+                        obrazTmp.SetPixel(k2, k1, Color.FromArgb(t, t, t));
                     }
                     else if (k2 >= wielkoscElementu && k2 <= (wielkoscElementu + (szerokoscBazowa-1)) && k1 > (wielkoscElementu + (wysokoscBazowa-1)))
                     {
-                        t = obrazWejsciowy.GetPixel(wysokoscBazowa - 1, k2 - wielkoscElementu).R;
+                        t = obrazWejsciowy.GetPixel(k2 - wielkoscElementu, wysokoscBazowa - 1).R;
 
-                        obrazTmp.SetPixel(k1, k2, Color.FromArgb(t, t, t));
+                        obrazTmp.SetPixel(k2, k1, Color.FromArgb(t, t, t));
                     }
                     else if (k2 < wielkoscElementu && k1 >= wielkoscElementu && k1 <= (wielkoscElementu + (wysokoscBazowa-1)))
                     {
                         t = obrazWejsciowy.GetPixel(0, k1 - wielkoscElementu).R;
 
-                        obrazTmp.SetPixel(k1, k2, Color.FromArgb(t, t, t));
+                        obrazTmp.SetPixel(k2, k1, Color.FromArgb(t, t, t));
                     }
                     else if (k2 > (wielkoscElementu + (szerokoscBazowa-1)) && k1 >= wielkoscElementu && k1 <= (wielkoscElementu + (wysokoscBazowa-1)))
                     {
                         t = obrazWejsciowy.GetPixel(szerokoscBazowa - 1, k1 - wielkoscElementu).R;
 
-                        obrazTmp.SetPixel(k1, k2, Color.FromArgb(t, t, t));
+                        obrazTmp.SetPixel(k2, k1, Color.FromArgb(t, t, t));
                     }
                     // ROGI
                     else if (k2 < wielkoscElementu && k1 < wielkoscElementu)
                     {
                         t = obrazWejsciowy.GetPixel(0, 0).R;
 
-                        obrazTmp.SetPixel(k1, k2, Color.FromArgb(t, t, t));
+                        obrazTmp.SetPixel(k2, k1, Color.FromArgb(t, t, t));
                     }
                     else if (k2 > (wielkoscElementu + (szerokoscBazowa-1)) && k1 < wielkoscElementu)
                     {
                         t = obrazWejsciowy.GetPixel(szerokoscBazowa - 1, 0).R;
 
-                        obrazTmp.SetPixel(k1, k2, Color.FromArgb(t, t, t));
+                        obrazTmp.SetPixel(k2, k1, Color.FromArgb(t, t, t));
                     }
                     else if (k2 < wielkoscElementu && k1 > (wielkoscElementu + (wysokoscBazowa-1)))
                     {
                         t = obrazWejsciowy.GetPixel(0, wysokoscBazowa - 1).R;
 
-                        obrazTmp.SetPixel(k1, k2, Color.FromArgb(t, t, t));
+                        obrazTmp.SetPixel(k2, k1, Color.FromArgb(t, t, t));
                     }
                     else if (k2 > (wielkoscElementu + (szerokoscBazowa-1)) && k1 > (wielkoscElementu + (wysokoscBazowa-1)))
                     {
                         t = obrazWejsciowy.GetPixel(szerokoscBazowa - 1, wysokoscBazowa - 1).R;
 
-                        obrazTmp.SetPixel(k1, k2, Color.FromArgb(t, t, t));
+                        obrazTmp.SetPixel(k2, k1, Color.FromArgb(t, t, t));
                     }
                     // POZOSTAŁE
                     else
                     {
                         t = obrazWejsciowy.GetPixel(k2 - wielkoscElementu, k1 - wielkoscElementu).R;
-                        obrazTmp.SetPixel(k1, k2, Color.FromArgb(t, t, t));
+                        obrazTmp.SetPixel(k2, k1, Color.FromArgb(t, t, t));
                     }
                 }
             }
