@@ -13,6 +13,7 @@ namespace MorphoOp
         {
             nazwaElementu = "Kolo";
             wielkoscElementu = promien;
+            wielkoscElementuCalkowita = 2 * promien + 1; 
 
             int srednica = 2 * wielkoscElementu + 1;
             int srodek = (srednica + 1) / 2;
@@ -25,11 +26,11 @@ namespace MorphoOp
                 {
                     if (Math.Pow((k1 - srodek), 2) + Math.Pow((k2 - srodek), 2) <= Math.Pow(wielkoscElementu, 2))
                     {
-                        strukturaElementu[k1, k2] = 255;
+                        strukturaElementu[k1, k2] = 1;
                     }
                     else
                     {
-                        strukturaElementu[k1, k2] = 999;     // 999 - dowolony element
+                        strukturaElementu[k1, k2] = 0;     // 999 - dowolony element
                     }
                 }
             }

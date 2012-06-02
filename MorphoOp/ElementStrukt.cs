@@ -14,6 +14,7 @@ namespace MorphoOp
         protected string nazwaElementu;
         protected int wielkoscElementu;  // Długość boku lub promienia
         protected int nachylenieOdcinka; // Tylko dla odcinka! (ew. poprawić)
+        protected int wielkoscElementuCalkowita;
 
 
         /* --- Konstruktor --- */
@@ -31,6 +32,11 @@ namespace MorphoOp
         public int WielkoscElementu
         {
             get { return wielkoscElementu; }
+        }
+
+        public int WielkoscElementuCalkowita
+        {
+            get { return wielkoscElementuCalkowita; }
         }
 
         public int Nachylenie       // Tylko dla odcinka!

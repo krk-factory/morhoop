@@ -13,6 +13,7 @@ namespace MorphoOp
         {
             nazwaElementu = "Kwadrat";
             wielkoscElementu = bok;
+            wielkoscElementuCalkowita = 2 * bok + 1;
 
             strukturaElementu = new int[2 * wielkoscElementu + 1, 2 * wielkoscElementu + 1];
 
@@ -20,7 +21,7 @@ namespace MorphoOp
             {
                 for (int k2 = 0; k2 < 2 * wielkoscElementu + 1; k2++)
                 {
-                    strukturaElementu[k1, k2] = 255;
+                    strukturaElementu[k1, k2] = 1;
                 }
             }
         }

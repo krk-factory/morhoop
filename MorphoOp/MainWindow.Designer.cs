@@ -137,12 +137,14 @@
             this.otwarcieToolStripMenuItem.Name = "otwarcieToolStripMenuItem";
             this.otwarcieToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
             this.otwarcieToolStripMenuItem.Text = "Otwarcie";
+            this.otwarcieToolStripMenuItem.Click += new System.EventHandler(this.otwarcieToolStripMenuItem_Click);
             // 
             // zamkniecieToolStripMenuItem
             // 
             this.zamkniecieToolStripMenuItem.Name = "zamkniecieToolStripMenuItem";
             this.zamkniecieToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
             this.zamkniecieToolStripMenuItem.Text = "Zamknięcie";
+            this.zamkniecieToolStripMenuItem.Click += new System.EventHandler(this.zamkniecieToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
@@ -154,6 +156,7 @@
             this.dylatacjaToolStripMenuItem.Name = "dylatacjaToolStripMenuItem";
             this.dylatacjaToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
             this.dylatacjaToolStripMenuItem.Text = "Dylatacja";
+            this.dylatacjaToolStripMenuItem.Click += new System.EventHandler(this.dylatacjaToolStripMenuItem_Click);
             // 
             // erozjaToolStripMenuItem
             // 
@@ -172,6 +175,7 @@
             this.filtracjaMaskaPrewittaToolStripMenuItem.Name = "filtracjaMaskaPrewittaToolStripMenuItem";
             this.filtracjaMaskaPrewittaToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
             this.filtracjaMaskaPrewittaToolStripMenuItem.Text = "Filtracja maską Prewitta";
+            this.filtracjaMaskaPrewittaToolStripMenuItem.Click += new System.EventHandler(this.filtracjaMaskaPrewittaToolStripMenuItem_Click);
             // 
             // filtracjaMaskaSobelaToolStripMenuItem
             // 

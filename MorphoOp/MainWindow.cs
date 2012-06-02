@@ -15,9 +15,6 @@ namespace MorphoOp
         /* --- Pola klasy --- */
         
         private Bitmap obrazWejsciowy;    // ew. zrobić public, aby korzystać z niego wszędzie
-        private Bitmap obrazTmp;
-        private int wysokoscObrazka;
-        private int szerokoscObrazka;
 
         private ElementStrukt elStr;
 
@@ -68,9 +65,6 @@ namespace MorphoOp
                 try
                 {
                     obrazWejsciowy = new Bitmap(sciezkaPliku);
-
-                    szerokoscObrazka = obrazWejsciowy.Size.Width;
-                    wysokoscObrazka = obrazWejsciowy.Size.Height;
 
                     obrazWejsciowyPictureBox.Image = obrazWejsciowy;
                     obrazWyjsciowyPictureBox.Image = null;
@@ -177,90 +171,129 @@ namespace MorphoOp
 
         private void erozjaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            rozszerzObraz(elStr.WielkoscElementu);
+            OurBitmap temp = rozszerzObraz(obrazWejsciowy, elStr.WielkoscElementu);
 
-            Erozja er = new Erozja(obrazWejsciowy, obrazTmp, elStr);
+            Erozja er = new Erozja(obrazWejsciowy, temp, elStr);
 
-
-            //obrazWyjsciowyPictureBox.Image = er.wykonajOperacje();
-            obrazWyjsciowyPictureBox.Image = obrazTmp;
+            obrazWyjsciowyPictureBox.Image = er.wykonajOperacje();
         }
 
 
         /* --- Rozszerzanie obrazka - ew. wyodrębnić jako kolejną klasę --- */
 
-        private void rozszerzObraz(int wielkoscElementu)        // Potrzebne, aby wykonać poszczególne operacje na krawędziach obrazka
+        private OurBitmap rozszerzObraz(Bitmap obrazWejsciowy, int wielkoscElementu)        // Potrzebne, aby wykonać poszczególne operacje na krawędziach obrazka
         {                                                       // Trochę pochrzanione z indeksami, ale działa ;-)
-            int szerokoscBazowa = obrazWejsciowy.Width;
-            int wysokoscBazowa  = obrazWejsciowy.Height;
-
-            obrazTmp = new Bitmap(obrazWejsciowy.Width + 2 * wielkoscElementu, obrazWejsciowy.Height + 2 * wielkoscElementu);
+            OurBitmap obrazTmp = new OurBitmap(obrazWejsciowy.Width + 2 * wielkoscElementu, obrazWejsciowy.Height + 2 * wielkoscElementu);
 
             int t;
 
-
-            for (int k1 = 0; k1 < obrazTmp.Height; k1++)
+            for (int k1 = 0; k1 < obrazTmp.image.Height; k1++)
             {
-                for (int k2 = 0; k2 < obrazTmp.Width; k2++)
+                for (int k2 = 0; k2 < obrazTmp.image.Width; k2++)
                 {
                     // PASKI
-                    if (k2 >= wielkoscElementu && k2 <= (wielkoscElementu + (szerokoscBazowa-1)) && k1 < wielkoscElementu)
+                    if (k2 >= wielkoscElementu && k2 <= (wielkoscElementu + (obrazWejsciowy.Width-1)) && k1 < wielkoscElementu)
                     {
                         t = obrazWejsciowy.GetPixel(k2 - wielkoscElementu, 0).R;
 
-                        obrazTmp.SetPixel(k2, k1, Color.FromArgb(t, t, t));
+                        obrazTmp.image.SetPixel(k2, k1, Color.FromArgb(t, t, t));
                     }
-                    else if (k2 >= wielkoscElementu && k2 <= (wielkoscElementu + (szerokoscBazowa-1)) && k1 > (wielkoscElementu + (wysokoscBazowa-1)))
+                    else if (k2 >= wielkoscElementu && k2 <= (wielkoscElementu + (obrazWejsciowy.Width - 1)) && k1 > (wielkoscElementu + (obrazWejsciowy.Height - 1)))
                     {
-                        t = obrazWejsciowy.GetPixel(k2 - wielkoscElementu, wysokoscBazowa - 1).R;
+                        t = obrazWejsciowy.GetPixel(k2 - wielkoscElementu, obrazWejsciowy.Height - 1).R;
 
-                        obrazTmp.SetPixel(k2, k1, Color.FromArgb(t, t, t));
+                        obrazTmp.image.SetPixel(k2, k1, Color.FromArgb(t, t, t));
                     }
-                    else if (k2 < wielkoscElementu && k1 >= wielkoscElementu && k1 <= (wielkoscElementu + (wysokoscBazowa-1)))
+                    else if (k2 < wielkoscElementu && k1 >= wielkoscElementu && k1 <= (wielkoscElementu + (obrazWejsciowy.Height-1)))
                     {
                         t = obrazWejsciowy.GetPixel(0, k1 - wielkoscElementu).R;
 
-                        obrazTmp.SetPixel(k2, k1, Color.FromArgb(t, t, t));
+                        obrazTmp.image.SetPixel(k2, k1, Color.FromArgb(t, t, t));
                     }
-                    else if (k2 > (wielkoscElementu + (szerokoscBazowa-1)) && k1 >= wielkoscElementu && k1 <= (wielkoscElementu + (wysokoscBazowa-1)))
+                    else if (k2 > (wielkoscElementu + (obrazWejsciowy.Width-1)) && k1 >= wielkoscElementu && k1 <= (wielkoscElementu + (obrazWejsciowy.Height-1)))
                     {
-                        t = obrazWejsciowy.GetPixel(szerokoscBazowa - 1, k1 - wielkoscElementu).R;
+                        t = obrazWejsciowy.GetPixel(obrazWejsciowy.Width - 1, k1 - wielkoscElementu).R;
 
-                        obrazTmp.SetPixel(k2, k1, Color.FromArgb(t, t, t));
+                        obrazTmp.image.SetPixel(k2, k1, Color.FromArgb(t, t, t));
                     }
                     // ROGI
                     else if (k2 < wielkoscElementu && k1 < wielkoscElementu)
                     {
                         t = obrazWejsciowy.GetPixel(0, 0).R;
 
-                        obrazTmp.SetPixel(k2, k1, Color.FromArgb(t, t, t));
+                        obrazTmp.image.SetPixel(k2, k1, Color.FromArgb(t, t, t));
                     }
-                    else if (k2 > (wielkoscElementu + (szerokoscBazowa-1)) && k1 < wielkoscElementu)
+                    else if (k2 > (wielkoscElementu + (obrazWejsciowy.Width-1)) && k1 < wielkoscElementu)
                     {
-                        t = obrazWejsciowy.GetPixel(szerokoscBazowa - 1, 0).R;
+                        t = obrazWejsciowy.GetPixel(obrazWejsciowy.Width - 1, 0).R;
 
-                        obrazTmp.SetPixel(k2, k1, Color.FromArgb(t, t, t));
+                        obrazTmp.image.SetPixel(k2, k1, Color.FromArgb(t, t, t));
                     }
-                    else if (k2 < wielkoscElementu && k1 > (wielkoscElementu + (wysokoscBazowa-1)))
+                    else if (k2 < wielkoscElementu && k1 > (wielkoscElementu + (obrazWejsciowy.Height-1)))
                     {
-                        t = obrazWejsciowy.GetPixel(0, wysokoscBazowa - 1).R;
+                        t = obrazWejsciowy.GetPixel(0, obrazWejsciowy.Height - 1).R;
 
-                        obrazTmp.SetPixel(k2, k1, Color.FromArgb(t, t, t));
+                        obrazTmp.image.SetPixel(k2, k1, Color.FromArgb(t, t, t));
                     }
-                    else if (k2 > (wielkoscElementu + (szerokoscBazowa-1)) && k1 > (wielkoscElementu + (wysokoscBazowa-1)))
+                    else if (k2 > (wielkoscElementu + (obrazWejsciowy.Width-1)) && k1 > (wielkoscElementu + (obrazWejsciowy.Height-1)))
                     {
-                        t = obrazWejsciowy.GetPixel(szerokoscBazowa - 1, wysokoscBazowa - 1).R;
+                        t = obrazWejsciowy.GetPixel(obrazWejsciowy.Width - 1, obrazWejsciowy.Height - 1).R;
 
-                        obrazTmp.SetPixel(k2, k1, Color.FromArgb(t, t, t));
+                        obrazTmp.image.SetPixel(k2, k1, Color.FromArgb(t, t, t));
                     }
                     // POZOSTAŁE
                     else
                     {
                         t = obrazWejsciowy.GetPixel(k2 - wielkoscElementu, k1 - wielkoscElementu).R;
-                        obrazTmp.SetPixel(k2, k1, Color.FromArgb(t, t, t));
+                        obrazTmp.image.SetPixel(k2, k1, Color.FromArgb(t, t, t));
                     }
                 }
             }
+            return obrazTmp;
+        }
+
+        private void dylatacjaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OurBitmap temp = rozszerzObraz(obrazWejsciowy, elStr.WielkoscElementu);
+
+            Dylatacja er = new Dylatacja(obrazWejsciowy, temp, elStr);
+
+            obrazWyjsciowyPictureBox.Image = er.wykonajOperacje();
+        }
+
+        private void otwarcieToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OurBitmap temp = rozszerzObraz(obrazWejsciowy, elStr.WielkoscElementu);
+
+            Erozja er = new Erozja(obrazWejsciowy, temp, elStr);
+
+            Bitmap temp2 = er.wykonajOperacje();
+
+            OurBitmap temp3 = rozszerzObraz(temp2, elStr.WielkoscElementu);
+
+            Dylatacja dyl = new Dylatacja(temp2, temp3, elStr);
+
+            obrazWyjsciowyPictureBox.Image = dyl.wykonajOperacje();
+        }
+
+        private void zamkniecieToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OurBitmap temp = rozszerzObraz(obrazWejsciowy, elStr.WielkoscElementu);
+
+            Dylatacja er = new Dylatacja(obrazWejsciowy, temp, elStr);
+
+            Bitmap temp2 = er.wykonajOperacje();
+
+            OurBitmap temp3 = rozszerzObraz(temp2, elStr.WielkoscElementu);
+
+            Erozja dyl = new Erozja(temp2, temp3, elStr);
+
+            obrazWyjsciowyPictureBox.Image = dyl.wykonajOperacje();
+        }
+
+        private void filtracjaMaskaPrewittaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
