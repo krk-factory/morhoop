@@ -23,11 +23,6 @@ namespace MorphoOp
             this.obrazWy = new Bitmap(obrazZr.Width, obrazZr.Height);
         }
 
-        /*  Porównanie komórek tablicaErozyjna[k1][k2] z elemenetem strukturalnym. 
-         *  W przypadku zgodności punkt obrazu źródłowego pozostaje bez zmian, 
-         *  w przeciwnym wypadku punkt przyjmuje wartość 0.
-         */
-
         public Bitmap wykonajOperacje()
         {
             int[,] strukturaElementu = elS.StrukturaElementu;

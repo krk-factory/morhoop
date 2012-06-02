@@ -33,6 +33,7 @@ namespace MorphoOp
 
             operacjaToolStripMenuItem.Enabled = false;
             elementStrukturalnyToolStripMenuItem.Enabled = false;
+            operacjeBezESToolStripMenuItem.Enabled = false;
         }
 
 
@@ -70,6 +71,7 @@ namespace MorphoOp
                     obrazWyjsciowyPictureBox.Image = null;
 
                     elementStrukturalnyToolStripMenuItem.Enabled = true;
+                    operacjeBezESToolStripMenuItem.Enabled = true;
 
                     //udostepnianieOperacji(true);
 
@@ -81,6 +83,7 @@ namespace MorphoOp
             }
             else
             {
+                operacjeBezESToolStripMenuItem.Enabled = false;
                 //udostepnianieOperacji(false);
             }
 
@@ -178,6 +181,63 @@ namespace MorphoOp
             obrazWyjsciowyPictureBox.Image = er.wykonajOperacje();
         }
 
+        private void dylatacjaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OurBitmap temp = rozszerzObraz(obrazWejsciowy, elStr.WielkoscElementu);
+
+            Dylatacja er = new Dylatacja(obrazWejsciowy, temp, elStr);
+
+            obrazWyjsciowyPictureBox.Image = er.wykonajOperacje();
+        }
+
+        private void otwarcieToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OurBitmap temp = rozszerzObraz(obrazWejsciowy, elStr.WielkoscElementu);
+
+            Erozja er = new Erozja(obrazWejsciowy, temp, elStr);
+
+            Bitmap temp2 = er.wykonajOperacje();
+
+            OurBitmap temp3 = rozszerzObraz(temp2, elStr.WielkoscElementu);
+
+            Dylatacja dyl = new Dylatacja(temp2, temp3, elStr);
+
+            obrazWyjsciowyPictureBox.Image = dyl.wykonajOperacje();
+        }
+
+        private void zamkniecieToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OurBitmap temp = rozszerzObraz(obrazWejsciowy, elStr.WielkoscElementu);
+
+            Dylatacja er = new Dylatacja(obrazWejsciowy, temp, elStr);
+
+            Bitmap temp2 = er.wykonajOperacje();
+
+            OurBitmap temp3 = rozszerzObraz(temp2, elStr.WielkoscElementu);
+
+            Erozja dyl = new Erozja(temp2, temp3, elStr);
+
+            obrazWyjsciowyPictureBox.Image = dyl.wykonajOperacje();
+        }
+
+        private void filtracjaZMaskaPrewittaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OurBitmap temp = rozszerzObraz(obrazWejsciowy, 1);
+
+            FiltracjaPrewitt er = new FiltracjaPrewitt(obrazWejsciowy, temp);
+
+            obrazWyjsciowyPictureBox.Image = er.wykonajOperacje();
+        }
+
+        private void filtracjaZMaskaSobelaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OurBitmap temp = rozszerzObraz(obrazWejsciowy, 1);
+
+            FiltracjaSobel er = new FiltracjaSobel(obrazWejsciowy, temp);
+
+            obrazWyjsciowyPictureBox.Image = er.wykonajOperacje();
+        }
+
 
         /* --- Rozszerzanie obrazka - ew. wyodrębnić jako kolejną klasę --- */
 
@@ -252,61 +312,22 @@ namespace MorphoOp
             return obrazTmp;
         }
 
-        private void dylatacjaToolStripMenuItem_Click(object sender, EventArgs e)
+        private void gradientMorfologicznyDylatacjaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OurBitmap temp = rozszerzObraz(obrazWejsciowy, elStr.WielkoscElementu);
-
-            Dylatacja er = new Dylatacja(obrazWejsciowy, temp, elStr);
+            
+            GradientMorfoDylatacja er = new GradientMorfoDylatacja(obrazWejsciowy, temp, elStr);
 
             obrazWyjsciowyPictureBox.Image = er.wykonajOperacje();
         }
 
-        private void otwarcieToolStripMenuItem_Click(object sender, EventArgs e)
+        private void gradientMorfologicznyErozjaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OurBitmap temp = rozszerzObraz(obrazWejsciowy, elStr.WielkoscElementu);
 
-            Erozja er = new Erozja(obrazWejsciowy, temp, elStr);
-
-            Bitmap temp2 = er.wykonajOperacje();
-
-            OurBitmap temp3 = rozszerzObraz(temp2, elStr.WielkoscElementu);
-
-            Dylatacja dyl = new Dylatacja(temp2, temp3, elStr);
-
-            obrazWyjsciowyPictureBox.Image = dyl.wykonajOperacje();
-        }
-
-        private void zamkniecieToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OurBitmap temp = rozszerzObraz(obrazWejsciowy, elStr.WielkoscElementu);
-
-            Dylatacja er = new Dylatacja(obrazWejsciowy, temp, elStr);
-
-            Bitmap temp2 = er.wykonajOperacje();
-
-            OurBitmap temp3 = rozszerzObraz(temp2, elStr.WielkoscElementu);
-
-            Erozja dyl = new Erozja(temp2, temp3, elStr);
-
-            obrazWyjsciowyPictureBox.Image = dyl.wykonajOperacje();
-        }
-
-        private void filtracjaMaskaPrewittaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OurBitmap temp = rozszerzObraz(obrazWejsciowy, 1);
-
-            FiltracjaPrewitt er = new FiltracjaPrewitt(obrazWejsciowy, temp);
+            GradientMorfoErozja er = new GradientMorfoErozja(obrazWejsciowy, temp, elStr);
 
             obrazWyjsciowyPictureBox.Image = er.wykonajOperacje();
-        }
-
-        private void filtracjaMaskaSobelaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OurBitmap temp = rozszerzObraz(obrazWejsciowy, 1);
-
-            FiltracjaSobel er = new FiltracjaSobel(obrazWejsciowy, temp);
-
-            obrazWyjsciowyPictureBox.Image = er.wykonajOperacje();
-        }
+        }       
     }
 }

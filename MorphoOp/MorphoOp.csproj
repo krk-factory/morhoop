@@ -51,6 +51,7 @@
     <Compile Include="Erozja.cs" />
     <Compile Include="FiltracjaPrewitt.cs" />
     <Compile Include="FiltracjaSobel.cs" />
+    <Compile Include="GradientMorfo.cs" />
     <Compile Include="GradientMorfoErozja.cs" />
     <Compile Include="Kolo.cs" />
     <Compile Include="Kwadrat.cs" />
