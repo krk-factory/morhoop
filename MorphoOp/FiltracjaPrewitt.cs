@@ -17,7 +17,7 @@ namespace MorphoOp
         private int[,] PrewittMaskVertical;
         private int[,] PrewittMaskHorizontal;
 
-        /*public FiltracjaPrewitt(Bitmap obrazZr, OurBitmap obrazWe, ElementStrukt elS)
+        public FiltracjaPrewitt(Bitmap obrazZr, OurBitmap obrazWe, ElementStrukt elS)
         {
             PrewittMaskHorizontal = new int[3, 3] { { 1, 1, 1 }, { 0, 0, 0 }, { -1, -1, -1 } };
             PrewittMaskVertical = new int[3, 3] { { -1, 0, 1 }, { -1, 0, 1 }, { -1, 0, 1 } };
@@ -27,11 +27,6 @@ namespace MorphoOp
             this.elS = elS;
 
             this.obrazWy = new Bitmap(obrazZr.Width, obrazZr.Height);
-        }
-
-        public Bitmap filter(Bitmap image)
-        {
-
         }
 
         public Bitmap wykonajOperacje()
@@ -66,6 +61,17 @@ namespace MorphoOp
             }
 
             return temp_image;
-        }*/
+        }
+
+        private int[,] convolute(int[,] mask, int[,] cluster)
+        {
+            int[,] maska = elS.StrukturaElementu;
+            int min = 255;
+            for (int i = 0; i < elS.WielkoscElementuCalkowita; i++)
+                for (int j = 0; j < elS.WielkoscElementuCalkowita; j++)
+                    
+
+            return Color.FromArgb(min, min, min);
+        }
     }
 }
