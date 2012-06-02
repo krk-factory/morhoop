@@ -30,7 +30,7 @@ namespace MorphoOp
                     }
                     else
                     {
-                        strukturaElementu[k1, k2] = 0;     // 999 - dowolony element
+                        strukturaElementu[k1, k2] = 0;     // 0 - dowolony element
                     }
                 }
             }
