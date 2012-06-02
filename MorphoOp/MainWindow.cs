@@ -182,8 +182,8 @@ namespace MorphoOp
             Erozja er = new Erozja(obrazWejsciowy, obrazTmp, elStr);
 
 
-            obrazWyjsciowyPictureBox.Image = er.wykonajOperacje();
-            //obrazWyjsciowyPictureBox.Image = obrazTmp;
+            //obrazWyjsciowyPictureBox.Image = er.wykonajOperacje();
+            obrazWyjsciowyPictureBox.Image = obrazTmp;
         }
 
 
