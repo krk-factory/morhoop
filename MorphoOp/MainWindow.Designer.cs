@@ -182,6 +182,7 @@
             this.filtracjaMaskaSobelaToolStripMenuItem.Name = "filtracjaMaskaSobelaToolStripMenuItem";
             this.filtracjaMaskaSobelaToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
             this.filtracjaMaskaSobelaToolStripMenuItem.Text = "Filtracja maską Sobela";
+            this.filtracjaMaskaSobelaToolStripMenuItem.Click += new System.EventHandler(this.filtracjaMaskaSobelaToolStripMenuItem_Click);
             // 
             // toolStripSeparator4
             // 

@@ -293,7 +293,20 @@ namespace MorphoOp
 
         private void filtracjaMaskaPrewittaToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            OurBitmap temp = rozszerzObraz(obrazWejsciowy, 1);
 
+            FiltracjaPrewitt er = new FiltracjaPrewitt(obrazWejsciowy, temp);
+
+            obrazWyjsciowyPictureBox.Image = er.wykonajOperacje();
+        }
+
+        private void filtracjaMaskaSobelaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OurBitmap temp = rozszerzObraz(obrazWejsciowy, 1);
+
+            FiltracjaSobel er = new FiltracjaSobel(obrazWejsciowy, temp);
+
+            obrazWyjsciowyPictureBox.Image = er.wykonajOperacje();
         }
     }
 }

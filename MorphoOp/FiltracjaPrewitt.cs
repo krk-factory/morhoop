@@ -10,68 +10,47 @@ namespace MorphoOp
     {
         private OurBitmap obrazWe;
         private Bitmap obrazZr;
-        private Bitmap obrazWy;
 
-        private ElementStrukt elS;
+        private const int maskSize = 3;
 
         private int[,] PrewittMaskVertical;
         private int[,] PrewittMaskHorizontal;
 
-        public FiltracjaPrewitt(Bitmap obrazZr, OurBitmap obrazWe, ElementStrukt elS)
+        public FiltracjaPrewitt(Bitmap obrazZr, OurBitmap obrazWe)
         {
-            PrewittMaskHorizontal = new int[3, 3] { { 1, 1, 1 }, { 0, 0, 0 }, { -1, -1, -1 } };
-            PrewittMaskVertical = new int[3, 3] { { -1, 0, 1 }, { -1, 0, 1 }, { -1, 0, 1 } };
+            PrewittMaskHorizontal = new int[,] { { 1, 1, 1 }, { 0, 0, 0 }, { -1, -1, -1 } };
+            PrewittMaskVertical = new int[,] { { -1, 0, 1 }, { -1, 0, 1 }, { -1, 0, 1 } };
 
             this.obrazWe = obrazWe;
             this.obrazZr = obrazZr;
-            this.elS = elS;
-
-            this.obrazWy = new Bitmap(obrazZr.Width, obrazZr.Height);
         }
 
         public Bitmap wykonajOperacje()
         {
-            int[,] strukturaElementu = elS.StrukturaElementu;
+            Bitmap obrazWy = new Bitmap(obrazZr.Width, obrazZr.Height);
 
-            for (int k1 = elS.WielkoscElementu; k1 < obrazWe.image.Width - elS.WielkoscElementu; k1++)
-            {
-                for (int k2 = elS.WielkoscElementu; k2 < obrazWe.image.Height - elS.WielkoscElementu; k2++)
+            for (int m = maskSize; m < obrazWe.image.Width - maskSize; m++)
+                for (int n = maskSize; n < obrazWe.image.Height - maskSize; n++)
                 {
-                    int[,] temp_window = clusterImage(k1, k2);
-                    obrazWy.SetPixel(k1 - elS.WielkoscElementu, k2 - elS.WielkoscElementu, findColor(temp_window));
+                    int color_h = 0;
+                    for (int j = 0; j < maskSize; j++)
+                        for (int k = 0; k < maskSize; k++)
+                            color_h += PrewittMaskHorizontal[j, k] * obrazWe.image.GetPixel(m - j, n - k).R;
+
+                    int color_v = 0;
+                    for (int j = 0; j < maskSize; j++)
+                        for (int k = 0; k < maskSize; k++)
+                            color_v += PrewittMaskVertical[j, k] * obrazWe.image.GetPixel(m - j, n - k).R;
+
+                    int color = (int)Math.Sqrt(Math.Pow(color_h, 2) + Math.Pow(color_v, 2));
+                    //int color = color_h;
+                    if (color > 255) color = 255;
+                    else if (color < 0) color = 0;
+                    Color final_color = Color.FromArgb(color, color, color);
+
+                    obrazWy.SetPixel(m-maskSize, n-maskSize, final_color);
                 }
-            }
-
             return obrazWy;
-        }
-
-        private int[,] clusterImage(int k1, int k2)
-        {
-            int[,] temp_image = new int[elS.WielkoscElementuCalkowita, elS.WielkoscElementuCalkowita];
-
-            int licznik1 = 0;
-            int licznik2;
-
-            for (int i = k1 - elS.WielkoscElementu; i <= k1 + elS.WielkoscElementu; i++)
-            {
-                licznik2 = 0;
-                for (int j = k2 - elS.WielkoscElementu; j <= k2 + elS.WielkoscElementu; j++)
-                    temp_image[licznik1, licznik2++] = obrazWe.image.GetPixel(i, j).R;
-                licznik1++;
-            }
-
-            return temp_image;
-        }
-
-        private int[,] convolute(int[,] mask, int[,] cluster)
-        {
-            int[,] maska = elS.StrukturaElementu;
-            int min = 255;
-            for (int i = 0; i < elS.WielkoscElementuCalkowita; i++)
-                for (int j = 0; j < elS.WielkoscElementuCalkowita; j++)
-                    
-
-            return Color.FromArgb(min, min, min);
         }
     }
 }
