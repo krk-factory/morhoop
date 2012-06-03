@@ -17,23 +17,29 @@ namespace MorphoOp
             wielkoscElementuCalkowita = 2 * dlugosc + 1;
 
             // TO DO !!!
-            // Aby zachować integralność z pozostałymi elementami, odcinek musi mieć długość 2 * n + 1
+            // Aby zachować integralność z pozostałymi elementami, odcinek musi być w "oknie" o długości 2 * n + 1
 
             strukturaElementu = new int[2 * wielkoscElementu + 1, 2 * wielkoscElementu + 1];
 
-            for (int k1 = 0; k1 < 2 * wielkoscElementu + 1; k1++)
+            int tmp1 = 0;
+
+            //for (int k1 = 0; k1 < 2 * wielkoscElementu + 1; k1++)
+            for (int y = 2 * wielkoscElementu, yw = -1 * wielkoscElementu; y >= 0; y--, yw++)
             {
-                for (int k2 = 0; k2 < 2 * wielkoscElementu + 1; k2++)
+                //for (int k2 = 0; k2 < 2 * wielkoscElementu + 1; k2++)
+                for (int x = 0, xw = -1 * wielkoscElementu; x < 2 * wielkoscElementu + 1; x++, xw++)
                 {
-                    if (k1 == Math.Floor(Math.Tan(nachylenie * (Math.PI/180)) * k2))        // Tangens musi być w radianach
+                    if (yw == Math.Round(Math.Tan(nachylenie * (Math.PI/180)) * xw))        // Tangens musi być w radianach
                     {                                                                       // Próby korzystania z zależności y = tg(a) * x + b
-                        strukturaElementu[k1, k2] = 1;
+                        strukturaElementu[x, y] = 1;
                     }
                     else
                     {
-                        strukturaElementu[k1, k2] = 0;     // 0 - dowolony element
+                        strukturaElementu[x, y] = 0;     // 0 - dowolony element
                     }
                 }
+
+                tmp1++;
             }
         }
     }

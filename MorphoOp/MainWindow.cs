@@ -34,6 +34,7 @@ namespace MorphoOp
             operacjaToolStripMenuItem.Enabled = false;
             elementStrukturalnyToolStripMenuItem.Enabled = false;
             operacjeBezESToolStripMenuItem.Enabled = false;
+            zapiszObrazWyjsciowyToolStripMenuItem.Enabled = false;
         }
 
 
@@ -72,6 +73,7 @@ namespace MorphoOp
 
                     elementStrukturalnyToolStripMenuItem.Enabled = true;
                     operacjeBezESToolStripMenuItem.Enabled = true;
+                    zapiszObrazWyjsciowyToolStripMenuItem.Enabled = true;
 
                     //udostepnianieOperacji(true);
 
@@ -238,6 +240,31 @@ namespace MorphoOp
             obrazWyjsciowyPictureBox.Image = er.wykonajOperacje();
         }
 
+        private void gradientMorfologicznyDylatacjaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OurBitmap temp = rozszerzObraz(obrazWejsciowy, elStr.WielkoscElementu);
+
+            GradientMorfoDylatacja er = new GradientMorfoDylatacja(obrazWejsciowy, temp, elStr);
+
+            obrazWyjsciowyPictureBox.Image = er.wykonajOperacje();
+        }
+
+        private void gradientMorfologicznyErozjaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OurBitmap temp = rozszerzObraz(obrazWejsciowy, elStr.WielkoscElementu);
+
+            GradientMorfoErozja er = new GradientMorfoErozja(obrazWejsciowy, temp, elStr);
+
+            obrazWyjsciowyPictureBox.Image = er.wykonajOperacje();
+        }
+
+        private void pomocToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutBox ab = new AboutBox();
+
+            ab.ShowDialog();
+        }       
+
 
         /* --- Rozszerzanie obrazka - ew. wyodrębnić jako kolejną klasę --- */
 
@@ -311,23 +338,5 @@ namespace MorphoOp
             }
             return obrazTmp;
         }
-
-        private void gradientMorfologicznyDylatacjaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OurBitmap temp = rozszerzObraz(obrazWejsciowy, elStr.WielkoscElementu);
-            
-            GradientMorfoDylatacja er = new GradientMorfoDylatacja(obrazWejsciowy, temp, elStr);
-
-            obrazWyjsciowyPictureBox.Image = er.wykonajOperacje();
-        }
-
-        private void gradientMorfologicznyErozjaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OurBitmap temp = rozszerzObraz(obrazWejsciowy, elStr.WielkoscElementu);
-
-            GradientMorfoErozja er = new GradientMorfoErozja(obrazWejsciowy, temp, elStr);
-
-            obrazWyjsciowyPictureBox.Image = er.wykonajOperacje();
-        }       
     }
 }

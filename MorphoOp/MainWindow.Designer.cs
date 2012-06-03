@@ -36,22 +36,22 @@
             this.koniecToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.elementStrukturalnyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.operacjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.erozjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dylatacjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.otwarcieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zamkniecieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.dylatacjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.erozjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.gradientMorfologicznyDylatacjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gradientMorfologicznyErozjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.operacjeBezESToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.filtracjaZMaskaPrewittaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.filtracjaZMaskaSobelaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pomocToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.obrazWejsciowyPictureBox = new System.Windows.Forms.PictureBox();
             this.obrazWyjsciowyPictureBox = new System.Windows.Forms.PictureBox();
             this.aktualnyElementLabel = new System.Windows.Forms.Label();
             this.daneElementuLabel = new System.Windows.Forms.Label();
-            this.operacjeBezESToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.filtracjaZMaskaPrewittaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.filtracjaZMaskaSobelaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.obrazWejsciowyPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.obrazWyjsciowyPictureBox)).BeginInit();
@@ -130,6 +130,25 @@
             this.operacjaToolStripMenuItem.Size = new System.Drawing.Size(89, 20);
             this.operacjaToolStripMenuItem.Text = "Operacje z ES";
             // 
+            // erozjaToolStripMenuItem
+            // 
+            this.erozjaToolStripMenuItem.Name = "erozjaToolStripMenuItem";
+            this.erozjaToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
+            this.erozjaToolStripMenuItem.Text = "Erozja";
+            this.erozjaToolStripMenuItem.Click += new System.EventHandler(this.erozjaToolStripMenuItem_Click);
+            // 
+            // dylatacjaToolStripMenuItem
+            // 
+            this.dylatacjaToolStripMenuItem.Name = "dylatacjaToolStripMenuItem";
+            this.dylatacjaToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
+            this.dylatacjaToolStripMenuItem.Text = "Dylatacja";
+            this.dylatacjaToolStripMenuItem.Click += new System.EventHandler(this.dylatacjaToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(254, 6);
+            // 
             // otwarcieToolStripMenuItem
             // 
             this.otwarcieToolStripMenuItem.Name = "otwarcieToolStripMenuItem";
@@ -143,25 +162,6 @@
             this.zamkniecieToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
             this.zamkniecieToolStripMenuItem.Text = "Zamknięcie";
             this.zamkniecieToolStripMenuItem.Click += new System.EventHandler(this.zamkniecieToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(254, 6);
-            // 
-            // dylatacjaToolStripMenuItem
-            // 
-            this.dylatacjaToolStripMenuItem.Name = "dylatacjaToolStripMenuItem";
-            this.dylatacjaToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
-            this.dylatacjaToolStripMenuItem.Text = "Dylatacja";
-            this.dylatacjaToolStripMenuItem.Click += new System.EventHandler(this.dylatacjaToolStripMenuItem_Click);
-            // 
-            // erozjaToolStripMenuItem
-            // 
-            this.erozjaToolStripMenuItem.Name = "erozjaToolStripMenuItem";
-            this.erozjaToolStripMenuItem.Size = new System.Drawing.Size(257, 22);
-            this.erozjaToolStripMenuItem.Text = "Erozja";
-            this.erozjaToolStripMenuItem.Click += new System.EventHandler(this.erozjaToolStripMenuItem_Click);
             // 
             // toolStripSeparator4
             // 
@@ -182,11 +182,35 @@
             this.gradientMorfologicznyErozjaToolStripMenuItem.Text = "Gradient morfologiczny (erozja)";
             this.gradientMorfologicznyErozjaToolStripMenuItem.Click += new System.EventHandler(this.gradientMorfologicznyErozjaToolStripMenuItem_Click);
             // 
+            // operacjeBezESToolStripMenuItem
+            // 
+            this.operacjeBezESToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.filtracjaZMaskaPrewittaToolStripMenuItem,
+            this.filtracjaZMaskaSobelaToolStripMenuItem});
+            this.operacjeBezESToolStripMenuItem.Name = "operacjeBezESToolStripMenuItem";
+            this.operacjeBezESToolStripMenuItem.Size = new System.Drawing.Size(102, 20);
+            this.operacjeBezESToolStripMenuItem.Text = "Operacje bez ES";
+            // 
+            // filtracjaZMaskaPrewittaToolStripMenuItem
+            // 
+            this.filtracjaZMaskaPrewittaToolStripMenuItem.Name = "filtracjaZMaskaPrewittaToolStripMenuItem";
+            this.filtracjaZMaskaPrewittaToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.filtracjaZMaskaPrewittaToolStripMenuItem.Text = "Filtracja z maską Prewitta";
+            this.filtracjaZMaskaPrewittaToolStripMenuItem.Click += new System.EventHandler(this.filtracjaZMaskaPrewittaToolStripMenuItem_Click);
+            // 
+            // filtracjaZMaskaSobelaToolStripMenuItem
+            // 
+            this.filtracjaZMaskaSobelaToolStripMenuItem.Name = "filtracjaZMaskaSobelaToolStripMenuItem";
+            this.filtracjaZMaskaSobelaToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.filtracjaZMaskaSobelaToolStripMenuItem.Text = "Filtracja z maską Sobela";
+            this.filtracjaZMaskaSobelaToolStripMenuItem.Click += new System.EventHandler(this.filtracjaZMaskaSobelaToolStripMenuItem_Click);
+            // 
             // pomocToolStripMenuItem
             // 
             this.pomocToolStripMenuItem.Name = "pomocToolStripMenuItem";
-            this.pomocToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
-            this.pomocToolStripMenuItem.Text = "Pomoc";
+            this.pomocToolStripMenuItem.Size = new System.Drawing.Size(86, 20);
+            this.pomocToolStripMenuItem.Text = "O programie";
+            this.pomocToolStripMenuItem.Click += new System.EventHandler(this.pomocToolStripMenuItem_Click);
             // 
             // obrazWejsciowyPictureBox
             // 
@@ -221,29 +245,6 @@
             this.daneElementuLabel.Size = new System.Drawing.Size(36, 13);
             this.daneElementuLabel.TabIndex = 4;
             this.daneElementuLabel.Text = "BRAK";
-            // 
-            // operacjeBezESToolStripMenuItem
-            // 
-            this.operacjeBezESToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.filtracjaZMaskaPrewittaToolStripMenuItem,
-            this.filtracjaZMaskaSobelaToolStripMenuItem});
-            this.operacjeBezESToolStripMenuItem.Name = "operacjeBezESToolStripMenuItem";
-            this.operacjeBezESToolStripMenuItem.Size = new System.Drawing.Size(102, 20);
-            this.operacjeBezESToolStripMenuItem.Text = "Operacje bez ES";
-            // 
-            // filtracjaZMaskaPrewittaToolStripMenuItem
-            // 
-            this.filtracjaZMaskaPrewittaToolStripMenuItem.Name = "filtracjaZMaskaPrewittaToolStripMenuItem";
-            this.filtracjaZMaskaPrewittaToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
-            this.filtracjaZMaskaPrewittaToolStripMenuItem.Text = "Filtracja z maską Prewitta";
-            this.filtracjaZMaskaPrewittaToolStripMenuItem.Click += new System.EventHandler(this.filtracjaZMaskaPrewittaToolStripMenuItem_Click);
-            // 
-            // filtracjaZMaskaSobelaToolStripMenuItem
-            // 
-            this.filtracjaZMaskaSobelaToolStripMenuItem.Name = "filtracjaZMaskaSobelaToolStripMenuItem";
-            this.filtracjaZMaskaSobelaToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
-            this.filtracjaZMaskaSobelaToolStripMenuItem.Text = "Filtracja z maską Sobela";
-            this.filtracjaZMaskaSobelaToolStripMenuItem.Click += new System.EventHandler(this.filtracjaZMaskaSobelaToolStripMenuItem_Click);
             // 
             // MainWindow
             // 

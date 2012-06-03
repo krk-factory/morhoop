@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("MorphoOp")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Program wykonujący operacje morfologiczne na obrazach binarnych i monochromatycznych z użyciem zadanego elementu strukturalnego.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("MorphoOp")]
-[assembly: AssemblyCopyright("Copyright ©  2012")]
+[assembly: AssemblyCopyright(":-)")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
