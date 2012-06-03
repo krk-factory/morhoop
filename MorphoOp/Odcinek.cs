@@ -16,30 +16,45 @@ namespace MorphoOp
             nachylenieOdcinka = nachylenie;    // Nachylenie
             wielkoscElementuCalkowita = 2 * dlugosc + 1;
 
-            // TO DO !!!
-            // Aby zachować integralność z pozostałymi elementami, odcinek musi być w "oknie" o długości 2 * n + 1
-
             strukturaElementu = new int[2 * wielkoscElementu + 1, 2 * wielkoscElementu + 1];
 
-            int tmp1 = 0;
-
-            //for (int k1 = 0; k1 < 2 * wielkoscElementu + 1; k1++)
-            for (int y = 2 * wielkoscElementu, yw = -1 * wielkoscElementu; y >= 0; y--, yw++)
+            // Bo nie istnieje tg(90)
+            if (nachylenie == 90)
             {
-                //for (int k2 = 0; k2 < 2 * wielkoscElementu + 1; k2++)
-                for (int x = 0, xw = -1 * wielkoscElementu; x < 2 * wielkoscElementu + 1; x++, xw++)
+                wypelnijStrukture90();
+            }
+            // Dla pozostałych wielkości nachylenia
+            else
+            {
+                wypelnijStrukture();
+            }
+        }
+
+        private void wypelnijStrukture()
+        {
+            // k1, k2 --> chodzenie po tablicy
+            // x, y --> argument, wartość --> w tablicy "środek układu współrzędnych" jest w punkcie (wielkoscElementu, wielkoscElementu)
+            for (int k2 = 2 * wielkoscElementu, y = -1 * wielkoscElementu; k2 >= 0; k2--, y++)
+            {
+                for (int k1 = 0, x = -1 * wielkoscElementu; k1 < 2 * wielkoscElementu + 1; k1++, x++)
                 {
-                    if (yw == Math.Round(Math.Tan(nachylenie * (Math.PI/180)) * xw))        // Tangens musi być w radianach
+                    if (y == Math.Round(Math.Tan(nachylenieOdcinka * (Math.PI / 180)) * x))        // Tangens musi być w radianach
                     {                                                                       // Próby korzystania z zależności y = tg(a) * x + b
-                        strukturaElementu[x, y] = 1;
+                        strukturaElementu[k1, k2] = 1;
                     }
                     else
                     {
-                        strukturaElementu[x, y] = 0;     // 0 - dowolony element
+                        strukturaElementu[k1, k2] = 0;     // 0 - dowolony element
                     }
                 }
+            }
+        }
 
-                tmp1++;
+        private void wypelnijStrukture90()
+        {
+            for (int k1 = 0; k1 < 2 * wielkoscElementu + 1; k1++)
+            {
+                strukturaElementu[wielkoscElementu, k1] = 1;
             }
         }
     }
