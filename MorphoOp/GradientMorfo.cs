@@ -27,6 +27,11 @@ namespace MorphoOp
                 {
                     t = bmp1.GetPixel(k1, k2).R - bmp2.GetPixel(k1, k2).R;
 
+                    if (t < 0)
+                        t = 0;
+                    else if (t > 255)
+                        t = 255;
+
                     tmp.SetPixel(k1, k2, Color.FromArgb(t, t, t));
                 }
             }
